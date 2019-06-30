@@ -5,7 +5,7 @@ def inverted_potency(A, tolerance, X):
     lambda_new = 0
     x_old = X/np.linalg.norm(X)
     A_inv = np.linalg.inv(A)
-    print('A inverse', A_inv)
+    print('A inverse\n', A_inv)
     while True:
         lambda_old = lambda_new
         y_new = A_inv.dot(x_old)

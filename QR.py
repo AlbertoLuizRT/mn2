@@ -28,12 +28,12 @@ def decompose_QR(A):
 
 def calculate_pij_QR(A, i, j):
     pij = np.identity(len(A))
-    if A[j][j] == 0:
+    if A[j, j] == 0:
         theta = np.pi/2
     else:
-        theta = np.arctan(A[i][i]/A[j][j])
-    pij[i][i] = np.cos(theta)
-    pij[j][j] = np.cos(theta)
-    pij[i][j] = np.sin(theta)
-    pij[j][i] = -np.sin(theta)
+        theta = np.arctan(A[i, i]/A[j, j])
+    pij[i, i] = np.cos(theta)
+    pij[j, j] = np.cos(theta)
+    pij[i, j] = np.sin(theta)
+    pij[j, i] = -np.sin(theta)
     return pij

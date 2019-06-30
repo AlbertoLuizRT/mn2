@@ -28,5 +28,5 @@ def calculate_error(A):
     sum = 0
     for i in range(len(A) - 2):
         for j in range(i+2, len(A) - 2):
-            sum += A[i][j]
+            sum += abs(A[i, j])
     return sum

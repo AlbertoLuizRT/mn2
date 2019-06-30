@@ -20,7 +20,7 @@ def main():
                   '2 9 8 37 13;'
                   '9 9 11 13 54')
     initial_guess = np.transpose(np.matrix('0.8 0.20 3 2 1'))
-    tolerance = 0.0001
+    tolerance = 0.01
 
     print("Métodos de Potência e Transformações de Similaridade\n\n")
     print("Alberto Luiz Rigotto, Daneivan Rainey Cordeiro, Fernanda Soares\n")
@@ -39,21 +39,34 @@ def main():
     if option == 4:
         householder_matrix, result_matrix = householder(A, tolerance)
     if option == 5:
-        jacobi_matrix, result_matrix = jacobi_transformation(A, tolerance)
+        jacobi_matrix, eigenvalues = jacobi_transformation(A, tolerance)
+        print_values_from_methods(eigenvalues, jacobi_matrix)
     if option == 6:
-        QR_matrix, result_matrix = QR_transformation(A, tolerance)
+        QR_matrix, eigenvalues = QR_transformation(A, tolerance)
+        print_values_from_methods(A, QR_matrix)
 
 
-def get_values_from_matrix(A, column):
-    b = A.dot(column)
-    proportion = b[0]/column[0]
+# def get_values_from_matrix(A, column):
+#     b = A.dot(column)
+#
+#     print(column)
+#     proportion = b[0, 0]/column[0]
+#
+#     for i in range(1, len(column)):
+#         new_proportion = b[0, i]/column[i]
+#
+#         if proportion - new_proportion > 0.1:
+#             return None
+#     return proportion
 
-    for i in range(1, len(column)):
-        new_proportion = b[i]/column[i]
 
-        if proportion - new_proportion > 0.1:
-            return None
-    return proportion
+def print_values_from_methods(eigenvalues, eigenvectors):
+    for i in range(len(eigenvectors) - 1):
+        eigenvalue = eigenvalues[i, i]
+        print('Eigenvector:\n', eigenvectors[:, i])
+        print('Eigenvalue:', eigenvalue)
+        print('\n')
+    return
 
 
 if __name__ == "__main__":

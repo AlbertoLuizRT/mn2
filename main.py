@@ -8,15 +8,19 @@ import numpy as np
 
 
 def main():
-    with open("input_file.txt", "r") as input_data:
-        for i, line in enumerate(input_data):
-            if i == 0:
-                dimension = int(line)
-            if i == dimension + 2:
-                tolerance = float(line)
-        A = np.loadtxt("input_file.txt", usecols=range(1, dimension))
-        if dimension + 2 == i:  # We have tolerance and initial guess
-            initial_guess = np.loadtxt("input_file.txt", usecols=range(dimension+1, dimension+1))
+    # with open("input_file.txt", "r") as input_data:
+        # for i, line in enumerate(input_data):
+        #     if i == 0:
+        #         dimension = int(line)
+        #     if i == dimension + 2:
+        #         tolerance = float(line)
+    A = np.matrix('42 3 6 2 9;'
+                  '3 20 4 9 9;'
+                  '6 4 61 8 11;'
+                  '2 9 8 37 13;'
+                  '9 9 11 13 54')
+    initial_guess = np.transpose(np.matrix('0.8 0.20 3 2 1'))
+    tolerance = 0.0001
 
     print("Métodos de Potência e Transformações de Similaridade\n\n")
     print("Alberto Luiz Rigotto, Daneivan Rainey Cordeiro, Fernanda Soares\n")

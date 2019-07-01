@@ -43,7 +43,7 @@ def main():
         print_values_from_methods(eigenvalues, jacobi_matrix)
     if option == 6:
         QR_matrix, eigenvalues = QR_transformation(A, tolerance)
-        print_values_from_methods(A, QR_matrix)
+        print_values_from_methods(eigenvalues, QR_matrix)
 
 
 # def get_values_from_matrix(A, column):
